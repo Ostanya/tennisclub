@@ -1,4 +1,4 @@
 package com.tennisclub.service.implementation;
 
-public class TennisClubService {
+public class TennisClubServiceImplementation {
 }

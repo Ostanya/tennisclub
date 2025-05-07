@@ -1,13 +1,20 @@
 package com.tennisclub.controller;
 
+import com.tennisclub.service.TennisClubService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 class TennisClubController {
 
-    @GetMapping("/login")
+    private final TennisClubService tennisClubService;
+
+    TennisClubController(TennisClubService tennisClubService) {
+        this.tennisClubService = tennisClubService;
+    }
+
+    @GetMapping("/")
     public String message() {
-        return "Hello Tania!";
+        return tennisClubService.getHello();
     }
 }
