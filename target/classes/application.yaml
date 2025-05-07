@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tennisclub
+    username: admin
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  security:
+    user:
+      name: user
+      password: pass
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    root: info
+    org.springframework.web: DEBUG
+
+server:
+  port: 8080
