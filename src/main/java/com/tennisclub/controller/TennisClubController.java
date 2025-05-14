@@ -13,8 +13,8 @@ class TennisClubController {
         this.tennisClubService = tennisClubService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/admin-login")
     public String message() {
-        return tennisClubService.getHello();
+        return tennisClubService.loginAdmin();
     }
 }
