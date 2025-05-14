@@ -74,22 +74,38 @@
 			<artifactId>swagger-annotations</artifactId>
 			<version>2.2.30</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok-maven-plugin</artifactId>
-			<version>1.18.20.0</version>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
+		<finalName>tennisclub</finalName> <!-- Will produce target/app.jar -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<source>21</source>
+					<target>21</target>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

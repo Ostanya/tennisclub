@@ -2,7 +2,9 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/tennisclub
     username: admin
-    password: secret
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
