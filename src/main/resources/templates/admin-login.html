@@ -1,41 +1,68 @@
-<!doctype html>
-<html lang="en">
-<section class="contact-section" id="section_5">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#f9f9f9" fill-opacity="1"
-              d="M0,96L40,117.3C80,139,160,181,240,186.7C320,192,400,160,480,149.3C560,139,640,149,720,176C800,203,880,245,960,250.7C1040,256,1120,224,1200,229.3C1280,235,1360,277,1400,298.7L1440,320L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
-    </svg>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-12">
-                <form class="custom-form contact-form" action="#" method="post" role="form">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="input-group align-items-center">
-                                <label for="user-name">Username</label>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Tennis Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-                                <input type="text" name="user-name" id="user-name" class="form-control"
-                                       placeholder="Your username" required>
-                            </div>
-                        </div>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
 
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <div class="input-group align-items-center">
-                                <label for="password">Password</label>
+        .bg {
+            /* Replace this URL with your actual tennis image path */
+            background-image: url('../static/tennis/images/tennis-bg.jpg');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            z-index: -1;
+        }
 
-                                <input type="text" name="password" id="password" class="form-control"
-                                       placeholder="Your password" required>
-                            </div>
-                        </div>
-                    </div>
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5); /* light tint */
+            z-index: -1;
+        }
 
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <button type="submit" class="form-control">Send</button>
-                    </div>
-                </form>
+        .card {
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow p-4" style="min-width: 320px; max-width: 400px;">
+        <h3 class="text-center mb-4 text-success">TC Klingenthal Login</h3>
+        <form th:action="@{/login}" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
             </div>
-            <div class="col-lg-6 col-12"></div>
-        </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Login</button>
+        </form>
     </div>
-</section>
+</div>
+
+</body>
 </html>
