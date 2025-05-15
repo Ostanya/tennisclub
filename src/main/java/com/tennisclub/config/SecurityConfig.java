@@ -3,7 +3,6 @@ package com.tennisclub.config;
 import com.tennisclub.service.implementation.CustomOAuth2UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -23,15 +22,17 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/", "/css/**", "/js/**").permitAll()
+                                .requestMatchers("/", "/admin-login", "/css/**", "/js/**").permitAll()
                                 .anyRequest().authenticated()
                 )
-            .oauth2Login(oauth -> oauth
-                .userInfoEndpoint(info -> info
-                    .userService(customOAuth2UserService)
+                .oauth2Login(oauth -> oauth
+                        .loginPage("/admin-login")
+                        .defaultSuccessUrl("/admin/dashboard")
+                        .userInfoEndpoint(info -> info
+                                .userService(customOAuth2UserService)
+                        )
                 )
-            );
-//                .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
+                .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
         return http.build();
     }
 }
